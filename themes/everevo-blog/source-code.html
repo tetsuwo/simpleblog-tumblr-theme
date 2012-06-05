@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Tetsuwo OISHI" />
+    <meta name="copyright" content="(c) Netsket Inc." />
+    <title>{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
+    <!-- VARIABLES/ -->
+    <meta name="text:Google Site Verification" content="-uwFUTkInxf6PWR3d8QvRWN-QTroDtHfHO9ru7Tp3OU" />
+    <meta name="text:Google Analytics" content="UA-6652299-20" />
+    <meta name="text:Disqus Short Name" content="" />
+    <meta name="text:Facebook App Id" content="232587993512716" />
+    <meta name="text:Facebook Page Url" content="http://www.facebook.com/profile.php?id=329354913751992" />
+    <meta name="text:Addthis Pub Id" content="tetsuwo" />
+    <meta name="text:everevo Client Id" content="a030440794f5c937deee0044c689da33" />
+    <meta name="color:BaseColor" content="#ff9900" />
+    <meta name="color:FooterColor" content="#999999" />
+    <meta name="image:Logo" content="http://media.tumblr.com/tumblr_m3wr4xUj1W1ql1qq6.png" />
+    <!-- /VARIABLES -->
+    {block:IfGoogleSiteVerification}
+        <meta name="google-site-verification" content="{text:Google Site Verification}" />
+    {/block:IfGoogleSiteVerification}
+    {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    <link rel="icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
+    <meta property="og:type" content="article" />
+    {block:PermalinkPage}
+        <link rel="canonical" href="{Permalink}" />
+    {/block:PermalinkPage}
+    <meta property="og:image" content="http://media.tumblr.com/tumblr_m3ztot7ve01ql1qq6.png" />
+    <meta name="viewport" content="width=775" /><!-- iPhone -->
+    <link rel="stylesheet" type="text/css" href="//static.tumblr.com/clvypew/SFQluegtq/reset.css" />
+    <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/vader/jquery-ui.css" />
+    <style>
+/**
+ * @author  Tetsuwo OISHI
+ * @twitter tetsukamp
+ * @see     http://tetsuwo.tumblr.com
+ */
+body {
+    font-size: 14px;
+    line-height: 1.6;
+    font-family:'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS UI Gothic', 'Lucida Grande', sans-serif;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+a, a:link { color: #36b; text-decoration: none; font-weight: bold; }
+a:hover { text-decoration: underline; }
+hr { border-width: 1px 0px 0px 0px; border-style: dotted; border-color: #666; height: 1px; margin: 1em 0; }
+ul { list-style-position: inside; }
+ol { list-style-position: inside; }
+
+/* CLEARFIX */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix{ display: inline-block; min-height: 1%; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
+/* TABLE */
+table { margin-bottom: 1.5em; }
+th, td { white-space: normal!important; word-break: break-all!important; word-wrap: break-word!important; padding: .4em; text-align: left; }
+table .l { text-align:left; }
+table .c { text-align:center; }
+table .r { text-align:right; }
+table .b { font-weight: bold; }
+table .n { white-space: nowrap!important; }
+table .s { font-size: 80%; }
+
+/* FLOAT */
+.fr { float: right; }
+.fl { float: left; }
+
+/* FIXED */
+.hide  { display: none; }
+.show  { display: block; }
+.fixmb { margin-bottom: 1em; }
+
+/* FORM RESET */
+input, textarea, button, select { padding: 3px 4px; margin: 0; border: none; }
+input, textarea {
+    background-color: #fff;
+    display: inline-block;
+    font-size: inherit;
+    color: #555;
+    border: 1px solid #999;
+    -webkit-box-shadow: inset 0px 0px 4px rgba( 0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0px 0px 4px rgba( 0, 0, 0, 0.3);
+    box-shadow: inset 0px 0px 4px rgba( 0, 0, 0, 0.3);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: .5em;
+}
+input:hover, textarea:hover { background-color: #eee; outline: none; }
+
+/* LAYOUT */
+.fixed-width {
+    margin: 0 auto auto;
+    padding: 0 3em;
+    position: relative;
+}
+#header, #pagebody {
+    margin: 0 auto;
+    padding: 0 1em;
+    max-width: 740px;
+}
+
+/* HEADER */
+#header { 
+    margin-bottom: 3em; 
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+#header hgroup { margin: 0; padding: 0; text-align: center; float: left; }
+#header h1 a { 
+    text-decoration: none; 
+    color: #fff; 
+    padding: 10px 15px; 
+    border-radius: 0 0 5px 5px;
+    background-color: {color:BaseColor};
+    display: inline-block; 
+    font-size: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    font-weight: bold; 
+    letter-spacing: 0;
+    -webkit-box-shadow: 0 0 1em rgba( 0, 0, 0, 0.2); 
+    -moz-box-shadow: 0 0 1em rgba( 0, 0, 0, 0.2);
+    box-shadow: 0 0 1em rgba( 0, 0, 0, 0.2);
+}
+#header h1 a:hover { background-color: #666; }
+#header h1 a small { padding-top: 3px; font-size: 90%; display: block; }
+#header .search { margin-top: 20px; float: right; }
+
+/* PAGEBODY */
+#pagebody { margin-bottom: 5em; }
+
+/* SIDEBAR */
+#sidebar { }
+
+/* MENU */
+#menu { background-color: #666; padding: 8px 10px; border-radius: 5px;
+        -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); -moz-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); }
+#menu, #menu a { color: #fff; line-height: 1.8em; }
+#menu a:hover { color: #8c0; }
+#menu .fixmb { margin-bottom: 1.5em; }
+#menu h1 { margin-bottom: .5em; border-bottom: 1px dotted #bbb; color: #bbb; }
+
+/* MAIN */
+#main { margin-top: .5em; text-shadow: none; }
+
+/* FOOTER */
+#footer {
+    color: #fff;
+    clear: both;
+    text-align: left;
+    padding: 30px 0;
+    position: relative;
+    background-color: {color:FooterColor};
+}
+#footer, #footer a { font-size: 11px; font-weight: bold; line-height: 1.5; color: #fff; text-decoration: none; }
+#footer a:hover { color: #ccc; }
+#footer h3 { margin: .5em 0 .3em; font-size: 130%; }
+/* -- footer pagetop -- */
+#footer .pagetop { position: absolute; top: -50px; right: 3em; }
+#footer .pagetop a { border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; display: block; width: 80px; height: 20px;
+    line-height: 20px; background-color: {color:FooterColor}; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold; text-decoration: none; }
+/* -- footer head/foot -- */
+#footer .head { margin-bottom: 3em; }
+#footer .foot { margin-bottom: 3em; }
+/* -- footer nav -- */
+#footer nav { display: block; width: 270px; float: left; margin-right: 30px; }
+#footer nav:first-child { width: 180px; }
+#footer nav:last-child { margin-right: 0; }
+#footer nav ul li { display: block; padding: 4px 0; border-top: 1px dotted #616161; }
+/* -- footer bottom -- */
+#footer .copyright { text-align: center; }
+
+/* -- blockquote -- */
+blockquote {
+    border-left: 5px solid #dfdfdf;
+    background-color: #efefef;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 90%;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+blockquote:before, blockquote:after {
+    /*content: '';*/
+    content: none !important;
+}
+/* -- pre -- */
+pre {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    font-size: 85%!important;
+    text-align: left;
+    line-height: 1.4;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #000;
+    color: #d1d1d1;
+    font-family: 'M+2VM+IPAG circle', 'Osaka-Mono', 'ＭＳ ゴシック', 'MS Gothic', 'VL Gothic', monospace;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+pre a, pre a:visited, pre a:hover {
+    color: inherit!important;
+    font-weight: inherit!important;
+}
+
+/* -- note -- */
+ol.notes {
+    margin: 2em 0;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 80%;
+}
+    ol.notes li {
+        padding: 1em;
+        border-bottom: 1px dotted #eee;
+    }
+        ol.notes li img {
+            vertical-align: middle;
+        }
+
+/* -- DISQUS -- */
+#disqus_thread { padding: 0 .5em; }
+
+/*#tumblr_controls { display: none; }*/
+
+
+/* POST */
+.post { margin-bottom: 2em; }
+.post-head { margin-bottom: .8em; }
+article.permalink .post-head { margin-bottom: 2em; }
+.post-head h1 { font-size: 180%; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+.post-head a { color: #333; }
+.post-head a:hover { color: #999; text-decoration: none; }
+
+/* -- post-body -- */
+.post-body { text-shadow: none; margin-bottom: 2em; }
+article.permalink .post-body { margin-bottom: 2em; }
+.readmore { margin-bottom: .5em; text-align: right; }
+.post-body b { font-weight: bold; }
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 { font-weight: bold; margin: 1.5em 0 .5em; }
+.post-body h2 { font-size: 120%; border-left: 5px solid #666; padding: .5em; color: #666; }
+.post-body h3 { font-size: 110%; }
+.post-body h4 { font-size: 100%; }
+.post-body h5 { font-size:  90%; }
+.post-body h6 { font-size:  80%; }
+.post-body p { margin: .5em 0 1.5em; }
+.post-body img { padding: .5em; border: 1px solid #ddd; }
+.post-body > p + img,
+.post-body > p + blockquote,
+.post-body > p + pre { margin-top: -1em; }
+
+.post-body ul {
+    margin: 1em 2em;
+    list-style: disc outside;
+    font-size: 90%;
+}
+    .post-body ul li {
+    }
+        .post-body ul li img {
+            vertical-align: middle;
+        }
+
+/* -- post-foot -- */
+.post-foot {
+    font-size: 80%;
+    color: #777; 
+    margin: 1em 0;
+}
+    .post-foot .tags {
+        float :left; 
+    }
+        .post-foot .tags a { 
+            float :left; 
+            text-shadow: none; 
+            background-color: #eee; 
+            border: 1px solid #ccc; 
+            padding: .2em .5em; 
+            margin-right: .5em; 
+            -webkit-border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            border-radius: 4px; color: #999; 
+            font-weight: normal; 
+            text-decoration: none; 
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+        }
+        .post-foot .tags a:hover { 
+            border: 1px solid #919191;
+            text-decoration: none; 
+        }
+    .post-foot .notes,
+    .post-foot time,
+    .post-foot .source { 
+        margin-left: 1em;
+        line-height: 21px;
+        float: right; 
+    }
+
+/* -- addthis -- */
+.addthis_toolbox .hatena-bookmark-button-frame {
+    float: left; 
+    margin-right: 1em;
+}
+
+/* -- social plugin -- */
+.post-social-plugin {
+    margin: 1em 0;
+    background-color: #f5f5f5;
+    border: 1px solid #eee;
+    padding: .5em;
+    height: 20px;
+    vertical-align: middle;
+}
+
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script>
+
+        {block:IfGoogleAnalytics}
+            // google analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{text:Google Analytics}']);
+            _gaq.push(['_trackPageview']);
+            (function(d) {
+                var ga = d.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })(document);
+        {/block:IfGoogleAnalytics}
+  
+        {block:IfDisqusShortName}
+            // disqus
+            var disqus_url = '{Permalink}';
+            var disqus_title = '{block:PostTitle}{PostTitle}{/block:PostTitle}';
+            var disqus_shortname = '{text:Disqus Short Name}';
+            (function(d) {
+                var s = d.createElement('script'); s.async = true;
+                s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+                (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s);
+            }(document));
+        {/block:IfDisqusShortName}
+
+    </script>
+</head>
+<body id="top">
+
+{block:IfFacebookAppId}
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId={text:Facebook App Id}"></script>
+{/block:IfFacebookAppId}
+
+<header id="header" class="clearfix">
+    <hgroup>
+        <h1><a href="/"><img src="{image:Logo}" alt="everevo blog" /> BLOG</a></h1>
+    </hgroup>
+</header>
+
+<div id="pagebody" class="clearfix">
+   <section id="main" class="clearfix">
+        <h1 class="hide">{block:IndexPage}ARTICLE LIST{/block:IndexPage}{block:PermalinkPage}ARTICLE{/block:PermalinkPage}</h1>
+    
+        {block:Posts}
+            <article class="post post-{block:Text}text{/block:Text}{block:Photo}photo{/block:Photo}{block:Quote}quote{/block:Quote}{block:Link}link{/block:Link}{block:Chat}chat{/block:Chat}{block:Audio}audio{/block:Audio}{block:Video}video{/block:Video}{block:PermalinkPage} permalink{/block:PermalinkPage} clearfix">
+                <header class="post-head clearfix">
+                    {block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+                    {block:Link}<h1><a href="{URL}" target="_blank">{Name}</a></h1>{/block:Link}
+                </header>
+    
+                {block:Link}{block:Description}<div class="post-body clearfix">{Description}</div>{/block:Description}{/block:Link}
+                {block:Text}<div class="post-body clearfix">{Body}</div>{/block:Text}
+                {block:Photo}{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}{block:Caption}{Caption}{/block:Caption}{/block:Photo}
+                {block:Quote}<blockquote>{Quote}</blockquote>{/block:Quote}
+                {block:Chat}<ul>{block:Lines}<li>{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</li>{/block:Lines}</ul>{/block:Chat}
+                {block:Audio}{AudioPlayerWhite}{block:Caption}{Caption}{/block:Caption}{/block:Audio}
+                {block:Video}{Video-500}{block:Caption}{Caption}{/block:Caption}{/block:Video}
+    
+                <footer class="post-foot clearfix">
+                    <div class="clearfix">
+                        {block:HasTags}
+                            <p class="tags">
+                                {block:Tags}
+                                    <a href="{TagURL}">{Tag}</a>
+                                {/block:Tags}
+                            </p>
+                        {/block:HasTags}
+                        <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}">{Year}.{MonthNumberWithZero}.{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</time>
+                        {block:ContentSource}
+                            <p class="source">Source: <a href="{SourceURL}">{SourceTitle}</a></p>
+                        {/block:ContentSource}
+                        <p class="notes">{NoteCountWithLabel}</p>
+                    </div>
+                    <div class="post-social-plugin clearfix">
+                        <script>var addthis_share = { templates: '{Title} {Permalink} from @everevo' };</script>
+                        <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
+                            <a class="addthis_button_tweet"></a>
+                            <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="add to hatena bookmark" width="20" height="20" /></a>
+                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                            <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="105" fb:like:ref=""></a>
+                            <a class="addthis_counter addthis_pill_style"></a>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+    
+            {block:PermalinkPage}
+            
+                {block:IfFacebookAppId}
+                    <fb:comments href="{Permalink}" num_posts="10" width="740"></fb:comments>
+                {/block:IfFacebookAppId}
+                
+                {block:IfDisqusShortName}
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        (function(d) {
+                            var dsq = d.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = 'http://{text:Disqus Short Name}.disqus.com/embed.js';
+                            (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })(document);
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Short Name}">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                {/block:IfDisqusShortName}
+    
+            {/block:PermalinkPage}
+    
+            {Block:PostNotes}{PostNotes}{/Block:PostNotes}
+    
+        {/block:Posts}
+    
+        {block:Pagination}
+            <footer id="pagination">
+                <div class="fl">
+                    <b>{lang:Page CurrentPage of TotalPages}</b>
+                    {block:PreviousPage}&lt;&lt; <a href="{PreviousPage}">PREVIOUS</a>{/block:PreviousPage}
+                </div>
+                <div class="fr">{block:NextPage}<a href="{NextPage}">NEXT</a> &gt;&gt;{/block:NextPage}</div>
+            </footer>
+        {/block:Pagination}
+    
+        {block:PermalinkPagination}
+            <footer id="pagination" class="clearfix">
+                <div class="fl">{block:NextPost}&lt;&lt; <a href="{NextPost}">PREVIOUS</a>{/block:NextPost}</div>
+                <div class="fr">{block:PreviousPost}<a href="{PreviousPost}">NEXT</a> &gt;&gt;{/block:PreviousPost}</div>
+            </footer>
+        {/block:PermalinkPagination}
+
+    </section><!-- /main -->
+    
+    <div id="sidebar" class="clearfix">
+        <hr />
+        <!--<aside id="menu" class="fixmb clearfix">
+            <h1 class="hide">MENU</h1>
+            <nav class="clearfix fixmb">
+                <h1>Menu</h1>
+                <ul>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="{RSS}">Subscribe</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                </ul>
+            </nav>
+        </aside>-->
+        <aside class="fixmb clearfix">
+            <h1 class="hide">SEARCH</h1>
+            <form action="/search" method="get">
+                <input type="text" name="q" value="{SearchQuery}" style="width: 10em;" />
+                <button class="medium blue awesome show">Search &raquo;</button>
+            </form>
+        </aside>
+        {block:IfFacebookPageUrl}
+            <aside class="fixmb clearfix">
+                <div style="float:left; margin-right:1.5em;">
+                    <h1>Facebook Page</h1>
+                    <fb:like-box href="{text:Facebook Page Url}" width="740" height="260" show_faces="true" border_color="#bbb" stream="false" header="false"></fb:like-box>
+                </div>
+            </aside>
+        {/block:IfFacebookPageUrl}
+    </div>
+</div><!-- /pagebody -->
+
+<footer id="footer" class="clearfix">
+    <div class="fixed-width clearfix">
+        <div class="pagetop"><a href="#top">PAGETOP</a></div>
+        <div class="head clearfix">
+            <nav>
+                <h3>Blog</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="{RSS}">Subscribe</a></li>
+                    <li><a href="#search">Search</a></li>
+                    <li><a href="#link">Link</a></li>
+                    <li><a href="#following">Following</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3>Netsket Products</h3>
+                <ul>
+                    <li><a href="http://www.netsket.com/">Netsket Inc.</a></li>
+                    <li><a href="http://twitaddict.net/">ツイッター依存度診断サービス「twitaddict」</a></li>
+                </ul>
+            </nav>
+            <nav id="profile" class="profile">
+                <h3>Profile</h3>
+                <p class="fixmb">everevo<br />{Description}</p>
+                <ul>
+                    <li><a href="http://www.facebook.com/everevo">facebook</a></li>
+                    <li><a href="http://twitter.com/#!/everevo">twitter</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <h3 id="others">Others</h3>
+                <ul>
+                    <li>
+                        <a href="http://b.hatena.ne.jp/entrylist?url=http://everevo.com/">
+                            <img src="http://b.hatena.ne.jp/bc/bl/http://everevo.com/" class="bcounter" alt="はてなブックマーク数" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        {block:Following}
+            <section id="following" class="foot clearfix">
+                <h3>Following</h3>
+                {block:Followed}
+                    <a href="{FollowedURL}"><img src="{FollowedPortraitURL-24}" alt="{FollowedName}" /></a>
+                {/block:Followed}
+            </section>
+        {/block:Following}
+
+        <div class="copyright">
+            Copyright &copy; <a href="http://www.netsket.com">Netsket Inc.</a>, All Rights Reserved.
+        </div>
+
+        <div class="clearfix">
+            <div class="fr">
+                <div>Version <b>0.0.5</b></div>
+                <div>Designed by Tetsuwo OISHI</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- script resource/ -->
+<div id="image-dialog" style="display: none;"></div>
+<!-- /script resource -->
+
+<script>
+
+    var addthis_config = {
+        data_track_clickback: false
+    };
+    
+    jQuery().ready(function($) 
+    {
+        $('a[href^="http"]').not('[href*="'+ location.hostname +'"]').attr('target', '_blank');
+      
+        /* twitter */
+        try {
+            twttr.anywhere(function(T) {
+                T.hovercards();
+            });
+        }
+        catch(e) {;}
+    });
+
+    {block:IfEverevoClientId}
+        window.everevoAsyncInit = function() {
+            everevo.init({ clientId: '{text:everevo Client Id}' });
+        };
+        (function(d, s) {
+            var sc = d.createElement(s); sc.type = 'text/javascript'; sc.async = true;
+            sc.src = 'https://api.everevo.com/sdk/connect.js';
+            var tg = document.getElementsByTagName(s)[0]; tg.parentNode.insertBefore(sc, tg);
+        })(document, 'script');
+    {/block:IfEverevoClientId}
+
+</script>
+
+{block:IfAddthisPubId}
+    <script src="//s7.addthis.com/js/250/addthis_widget.js#username={text:Addthis Pub Id}" async="async"></script>
+{/block:IfAddthisPubId}
+
+<script src="//static.ak.fbcdn.net/connect.php/js/FB.Share" async="async"></script>
+<script src="//platform.twitter.com/anywhere.js?id=zYXPdUUZrelo5ZoF072dGQ&v=1" async="async"></script>
+<script src="//platform.twitter.com/widgets.js" async="async"></script>
+<script src="//widgets.twimg.com/j/2/widget.js" async="async"></script>
+<script src="//apis.google.com/js/plusone.js" async="async"></script>
+<script src="//b.st-hatena.com/js/bookmark_button_wo_al.js" charset="utf-8" async="async"></script>
+
+</body>
+</html>
