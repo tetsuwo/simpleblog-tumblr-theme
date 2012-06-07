@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="author" content="Tetsuwo OISHI" />
-  <meta name="copyright" content="(c) Netsket Inc." />
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+  <!--
+
+    Designed by Tetsuwo OISHI
+    @twitter tetsukamp
+    @see http://tetsuwo.tumblr.com
+
+  -->
+  <meta charset="utf-8">
+  <meta name="author" content="Tetsuwo OISHI">
+  <meta name="copyright" content="(c) Netsket Inc.">
   <title>{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
+
   <!-- VARIABLES/ -->
-  <meta name="text:Google Site Verification" content="-uwFUTkInxf6PWR3d8QvRWN-QTroDtHfHO9ru7Tp3OU" />
-  <meta name="text:Google Analytics" content="UA-6652299-20" />
-  <meta name="text:Disqus Short Name" content="" />
-  <meta name="text:Facebook App Id" content="232587993512716" />
-  <meta name="text:Facebook Page Url" content="http://www.facebook.com/profile.php?id=329354913751992" />
-  <meta name="text:Addthis Pub Id" content="tetsuwo" />
-  <meta name="text:everevo Client Id" content="a030440794f5c937deee0044c689da33" />
-  <meta name="color:BaseColor" content="#ff9900" />
-  <meta name="color:FooterColor" content="#999999" />
-  <meta name="image:Logo" content="http://media.tumblr.com/tumblr_m3wr4xUj1W1ql1qq6.png" />
+  <meta name="text:Google Site Verification" content="-uwFUTkInxf6PWR3d8QvRWN-QTroDtHfHO9ru7Tp3OU">
+  <meta name="text:Google Analytics" content="UA-6652299-20">
+  <meta name="text:Disqus Short Name" content="">
+  <meta name="text:Facebook App Id" content="48119224995">
+  <meta name="text:Facebook Page Url" content="http://www.facebook.com/profile.php?id=329354913751992">
+  <meta name="text:Addthis Pub Id" content="tetsuwo">
+  <meta name="text:everevo Client Id" content="a030440794f5c937deee0044c689da33">
+  <meta name="color:BaseColor" content="#ff9900">
+  <meta name="color:FooterColor" content="#999999">
+  <meta name="image:Logo" content="http://media.tumblr.com/tumblr_m3wr4xUj1W1ql1qq6.png">
   <!-- /VARIABLES -->
+
   {block:IfGoogleSiteVerification}
-    <meta name="google-site-verification" content="{text:Google Site Verification}" />
+    <meta name="google-site-verification" content="{text:Google Site Verification}">
   {/block:IfGoogleSiteVerification}
+
   {block:Description}
-    <meta name="description" content="{MetaDescription}" />
+    <meta name="description" content="{MetaDescription}">
   {/block:Description}
-  <link rel="icon" href="{Favicon}" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
-  <meta property="og:type" content="article" />
+
   {block:PermalinkPage}
-    <link rel="canonical" href="{Permalink}" />
+    <link rel="canonical" href="{Permalink}">
   {/block:PermalinkPage}
-  <meta property="og:image" content="http://media.tumblr.com/tumblr_m3ztot7ve01ql1qq6.png" />
-  <meta name="viewport" content="width=775" /><!-- iPhone -->
-  <link rel="stylesheet" type="text/css" href="//static.tumblr.com/clvypew/SFQluegtq/reset.css" />
-  <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/vader/jquery-ui.css" />
+
+  {block:IfFacebookAppId}
+    <!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS -->
+    <!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. -->
+    <!-- Read more: http://ogp.me/ -->
+    <meta property="fb:app_id" content="{text:Facebook App Id}">
+    <meta property="og:title" content="{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}">
+    <meta property="og:url" content="{Permalink}">
+    {block:Description}
+      <meta property="og:description" content="{MetaDescription}">
+    {/block:Description}
+    <meta property="og:type" content="tumblr-feed:tumblelog">
+    <meta property="og:image" content="{Favicon}">
+    <!-- END TUMBLR FACEBOOK OPENGRAPH TAGS -->
+  {/block:IfFacebookAppId}
+
+  <link rel="icon" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
+  <link rel="stylesheet" type="text/css" href="//static.tumblr.com/clvypew/SFQluegtq/reset.css">
+  <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/vader/jquery-ui.css">
   <style>
     /**
      * @author  Tetsuwo OISHI
@@ -267,6 +291,7 @@
     .post-body > p + img,
     .post-body > p + blockquote,
     .post-body > p + pre { margin-top: -1em; }
+    .post-body small { font-size: 80%; }
     
     .post-body ul {
       margin: 1em 2em;
