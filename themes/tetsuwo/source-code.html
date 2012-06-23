@@ -5,7 +5,7 @@
 
     Designed by Tetsuwo OISHI
     @twitter tetsukamp
-    @see http://tetsuwo.tumblr.com
+    @see     http://tetsuwo.tumblr.com
 
   -->
   <meta charset="utf-8">
@@ -21,6 +21,8 @@
   <meta name="text:Addthis Pub Id" content="tetsuwo">
   <!-- /VARIABLES -->
 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+
   {block:Description}
     <meta name="description" content="{MetaDescription}">
   {/block:Description}
@@ -32,8 +34,6 @@
   {block:IfGoogleSiteVerification}
     <meta name="google-site-verification" content="{text:Google Site Verification}">
   {/block:IfGoogleSiteVerification}
-
-  <meta name="viewport" content="width=775"><!-- iPhone -->
 
   {block:IfFacebookAppId}
     <!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS -->
@@ -293,7 +293,7 @@
       list-style: disc outside;
       font-size: 90%;
     }
-	.post-body ol {
+    .post-body ol {
       list-style: decimal outside;
 	}
       .post-body ul li {
@@ -354,7 +354,19 @@
       height: 20px;
       vertical-align: middle;
     }
+
+    /* iPhone 3G/3GS CSS */
+    @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) {
+      html { -webkit-text-size-adjust: none; }
+      #header, #pagebody { width: auto; max-width: auto; }
+
+    /* iPhone 4 CSS */
+    @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) {
+      html { -webkit-text-size-adjust: none; }
+      #header, #pagebody { width: auto; max-width: auto; }
+    }   
     
+
     {CustomCSS}
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -456,7 +468,7 @@
       {block:PermalinkPage}
       
         {block:IfFacebookAppId}
-          <fb:comments href="{Permalink}" num_posts="10" width="740"></fb:comments>
+          <div class="facebook-comments" data-href="{Permalink}" data-num_posts="10" data-width="740"></div>
         {/block:IfFacebookAppId}
         
         {block:IfDisqusShortName}
@@ -524,7 +536,11 @@
     <aside class="fixmb clearfix">
       <div style="float:left; margin-right:1.5em;">
         <h1>Facebook Page</h1>
-        <fb:like-box href="http://www.facebook.com/Tetsuwo.OISHI" width="740" height="260" show_faces="true" border_color="#bbb" stream="false" header="false"></fb:like-box>
+        <div class="facebook-like-box" 
+             data-href="http://www.facebook.com/Tetsuwo.OISHI" 
+             data-width="740" data-height="260" data-show_faces="true"
+             data-border_color="#bbb" data-stream="false" data-header="false"></div>
+        </div>
       </div>
       <!--
       <div style="float:left; margin-right:1.5em;">
@@ -619,42 +635,69 @@
 <!-- /script resource -->
 
 <script>
+
   var addthis_config = {
     data_track_clickback: false
   };
-  
-  jQuery().ready(function($) {
-  
+
+  var hogeFacebook = function() {
+    $('.facebook-like-box').each(function() {
+      $(this).empty().append($('<fb:like-box />').attr({
+        href: $(this).attr('data-href'),
+        width: $('#pagebody').width(),
+        height: $(this).attr('data-height'),
+        show_faces: $(this).attr('data-show_faces'),
+        border_color: $(this).attr('data-border_color'),
+        stream: $(this).attr('data-stream'),
+        header: $(this).attr('data-border_color')
+      }));
+    });
+
+    $('.facebook-comments').each(function() {
+      $(this).empty().append($('<fb:comments />').attr({
+        href: $(this).attr('data-href'),
+        width: $('#pagebody').width(),
+        num_posts: $(this).attr('data-num_posts')
+      }));
+    });
+
+    FB.XFBML.parse();
+  };
+
+  /* FACEBOOK */
+  window.fbAsyncInit = function() {
+//    hogeFacebook();
+  };
+
+  jQuery(document).ready(function($) {
+
     $('a[href^="http"]').not('[href*="'+location.hostname+'"]').attr('target', '_blank');
-  
-    /* facebook:comment
-    var $fbcomment = $('#fbcomment');
-    if ($fbcomment.length === 1) {
-      $fbcomment.html('<fb:comments href="'+ $fbcomment.attr('data-permalink') +'" num_posts="10" width="'+ $('#pagebody').width() +'"></fb:comments>');
-      FB.XFBML.parse();
-    }*/
-  
+
     /* TWITTER */
     try {
       twttr.anywhere(function(T) {
         T.hovercards();
       });
     } catch(e) {;}
-    
+
   });
+
+  jQuery(window).resize(function($) {
+    hogeFacebook();
+  });
+
 </script>
 
 {block:IfAddthisPubId}
-  <script src="//s7.addthis.com/js/250/addthis_widget.js#username={text:Addthis Pub Id}" async="async"></script>
+  <script src="//s7.addthis.com/js/250/addthis_widget.js#username={text:Addthis Pub Id}" async></script>
 {/block:IfAddthisPubId}
 
-<script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-<script src="//platform.twitter.com/anywhere.js?id=zYXPdUUZrelo5ZoF072dGQ&v=1" async="async"></script>
-<script src="//widgets.twimg.com/j/2/widget.js" async="true"></script>
-<script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-<script src="//static.ak.fbcdn.net/connect.php/js/FB.Share" async="async"></script>
-<script src="//apis.google.com/js/plusone.js" async="async"></script>
-<script src="//platform.twitter.com/widgets.js" async="async"></script>
+<script src="//platform.twitter.com/widgets.js" async></script>
+<script src="//widgets.twimg.com/j/2/widget.js" async></script>
+<script src="//platform.twitter.com/anywhere.js?id=zYXPdUUZrelo5ZoF072dGQ&v=1" async></script>
+<script src="//static.ak.fbcdn.net/connect.php/js/FB.Share" async></script>
+<script src="//apis.google.com/js/plusone.js" async></script>
+<script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
 
 </body>
 </html>
