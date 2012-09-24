@@ -56,11 +56,52 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
     <link rel="stylesheet" type="text/css" href="//static.tumblr.com/clvypew/SFQluegtq/reset.css">
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/vader/jquery-ui.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script src="https://platform.linkedin.com/in.js">
+        api_key: fiokzlldzt8x
+        onLoad: onLinkedInLoad
+        authorize: true
+    </script>
+    <script>
+
+        var _debugger = function(val) {
+            if (true) {
+                console.log(val);
+            }
+        };
+
+        {block:IfGoogleAnalytics}
+            // google analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{text:Google Analytics}']);
+            _gaq.push(['_trackPageview']);
+            (function(d) {
+                var ga = d.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })(document);
+        {/block:IfGoogleAnalytics}
+    
+        {block:IfDisqusShortName}
+            // disqus
+            var disqus_url = '{Permalink}';
+            var disqus_title = '{block:PostTitle}{PostTitle}{/block:PostTitle}';
+            var disqus_shortname = '{text:Disqus Short Name}';
+            (function(d) {
+                var s = d.createElement('script'); s.async = true;
+                s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+                (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s);
+            }(document));
+        {/block:IfDisqusShortName}
+
+    </script>
     <style>
         body {
             font-size: 14px;
             line-height: 1.6;
-            font-family:'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS UI Gothic', 'Lucida Grande', sans-serif;
+            font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS UI Gothic', 'Lucida Grande', sans-serif;
             color: #333;
             word-break: break-all;
             word-wrap: break-word;
@@ -408,101 +449,8 @@
 
         {CustomCSS}
     </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-    <script src="https://platform.linkedin.com/in.js">
-        api_key: fiokzlldzt8x
-        onLoad: onLinkedInLoad
-        authorize: true
-    </script>
-    <script>
-
-        var _debugger = function(val) {
-            if (true) {
-                console.log(val);
-            }
-        };
-
-        {block:IfGoogleAnalytics}
-            // google analytics
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', '{text:Google Analytics}']);
-            _gaq.push(['_trackPageview']);
-            (function(d) {
-                var ga = d.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })(document);
-        {/block:IfGoogleAnalytics}
-    
-        {block:IfDisqusShortName}
-            // disqus
-            var disqus_url = '{Permalink}';
-            var disqus_title = '{block:PostTitle}{PostTitle}{/block:PostTitle}';
-            var disqus_shortname = '{text:Disqus Short Name}';
-            (function(d) {
-                var s = d.createElement('script'); s.async = true;
-                s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-                (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s);
-            }(document));
-        {/block:IfDisqusShortName}
-
-    </script>
 </head>
 <body id="top">
-
-{block:IfFacebookAppId}
-    <div id="fb-root"></div>
-    <script id="facebook-jssdk" src="//connect.facebook.net/en_US/all.js#xfbml=1&appId={text:Facebook App Id}"></script>
-    <script>
-        var _awakeFacebookPlugins = function() {
-            if (!FB || !FB.XFBML) { 
-                return; 
-            }
-    
-            $('.facebook-like-box').each(function() {
-                $(this).empty().append($('<fb:like-box />').attr({
-                    href: $(this).attr('data-href'),
-                    width: $('#pagebody').width(),
-                    height: $(this).attr('data-height'),
-                    show_faces: $(this).attr('data-show_faces'),
-                    border_color: $(this).attr('data-border_color'),
-                    stream: $(this).attr('data-stream'),
-                    header: $(this).attr('data-border_color')
-                }));
-            });
-    
-            $('.facebook-comments').each(function() {
-                $(this).empty().append($('<fb:comments />').attr({
-                    href: $(this).attr('data-href'),
-                    width: $('#pagebody').width(),
-                    num_posts: $(this).attr('data-num_posts')
-                }));
-            });
-    
-            FB.XFBML.parse();
-        };
-
-        window.fbAsyncInit = function() {
-            _debugger('fbAsyncInit');
-            _awakeFacebookPlugins();
-        };
-
-        jQuery(window).resize(function() {
-            if (localStorage) {
-                if (localStorage._width && localStorage._width == $('body').width()) {
-                    return;
-                }
-
-                localStorage._width = $('body').width();
-                
-                _debugger('onResize');
-                _awakeFacebookPlugins();
-            }
-        });
-    </script>
-{/block:IfFacebookAppId}
 
 <header id="header" class="clearfix">
     <hgroup>
@@ -549,6 +497,7 @@
                         <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
                             <a class="addthis_button_tweet"></a>
                             <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="add to hatena bookmark" width="20" height="20"></a>
+                            <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
                             <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
                             <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="105" fb:like:ref=""></a>
                             <a class="addthis_counter addthis_pill_style"></a>
@@ -659,7 +608,7 @@
                 </div>
                 <h3 id="others">Others</h3>
                 <ul>
-                    <li><a href="http://b.hatena.ne.jp/entrylist?url=http://tetsuwo.tumblr.com/"><img src="http://b.hatena.ne.jp/bc/bl/http://tetsuwo.tumblr.com/" class="bcounter" alt="はてなブックマーク数" title="はてなブックマーク数"></a></li>
+                    <li><a href="http://b.hatena.ne.jp/entrylist?url=http://tetsuwo.tumblr.com/"><img src="http://b.hatena.ne.jp/bc/bl/http://tetsuwo.tumblr.com/" class="bcounter" alt="はてなブックマーク数"></a></li>
                 </ul>
             </nav>
             <nav>
@@ -680,24 +629,24 @@
                 </ul>
             </nav>
             <nav>
-<script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
-<script language="javascript" type="text/javascript">
-Hatena.BookmarkWidget.url   = "http://tetsuwo.tumblr.com";
-Hatena.BookmarkWidget.title = "Popular Articles";
-Hatena.BookmarkWidget.sort  = "count";
-Hatena.BookmarkWidget.width = 0;
-Hatena.BookmarkWidget.num   = 10;
-Hatena.BookmarkWidget.theme = "notheme";
-Hatena.BookmarkWidget.load();
-</script>
+                <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+                <script language="javascript" type="text/javascript">
+                Hatena.BookmarkWidget.url   = "http://tetsuwo.tumblr.com";
+                Hatena.BookmarkWidget.title = "Popular Articles";
+                Hatena.BookmarkWidget.sort  = "count";
+                Hatena.BookmarkWidget.width = 0;
+                Hatena.BookmarkWidget.num   = 10;
+                Hatena.BookmarkWidget.theme = "notheme";
+                Hatena.BookmarkWidget.load();
+                </script>
             </nav>
             <nav id="profile" class="profile">
                 <h3>Profile</h3>
                 <p class="fixmb">Tetsuwo OISHI - 1984/09/14<br>{Description}</p>
                 <ul>
-                    <li><a href="http://www.facebook.com/tetsuwo">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/tetsuwo">Facebook</a></li>
                     <li><a href="https://plus.google.com/114535587567967979997">Google+</a></li>
-                    <li><a href="http://twitter.com/#!/tetsukamp">Twitter</a></li>
+                    <li><a href="https://twitter.com/tetsukamp">Twitter</a></li>
                     <li><a href="https://bitbucket.org/tetsuwo">Bitbucket</a></li>
                     <li><a href="https://github.com/tetsuwo">GitHub</a></li>
                     <li><a href="http://jsdo.it/tetsuwo">jsdo.it</a></li>
@@ -724,11 +673,73 @@ Hatena.BookmarkWidget.load();
 <div id="image-dialog" style="display: none;"></div>
 <!-- /script resource -->
 
+
+{block:IfFacebookAppId}
+    <div id="fb-root"></div>
+    <script>
+        var _awakeFacebookPlugins = function() {
+            if (!FB || !FB.XFBML) { 
+                return; 
+            }
+    
+            $('.facebook-like-box').each(function() {
+                $(this).empty().append($('<fb:like-box />').attr({
+                    href: $(this).attr('data-href'),
+                    width: $('#pagebody').width(),
+                    height: $(this).attr('data-height'),
+                    show_faces: $(this).attr('data-show_faces'),
+                    border_color: $(this).attr('data-border_color'),
+                    stream: $(this).attr('data-stream'),
+                    header: $(this).attr('data-border_color')
+                }));
+            });
+    
+            $('.facebook-comments').each(function() {
+                $(this).empty().append($('<fb:comments />').attr({
+                    href: $(this).attr('data-href'),
+                    width: $('#pagebody').width(),
+                    num_posts: $(this).attr('data-num_posts')
+                }));
+            });
+    
+            FB.XFBML.parse();
+        };
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId : '{text:Facebook App Id}',
+                status: true,
+                cookie: true,
+                xfbml : false
+            });
+            _debugger('fbAsyncInit');
+            _awakeFacebookPlugins();
+        };
+
+        jQuery(window).resize(function() {
+            if (localStorage) {
+                if (localStorage._width && localStorage._width == $('body').width()) {
+                    return;
+                }
+
+                localStorage._width = $('body').width();
+                
+                _debugger('onResize');
+                _awakeFacebookPlugins();
+            }
+        });
+    </script>
+{/block:IfFacebookAppId}
+
 <script>
 
     var addthis_config = {
         data_track_clickback: false
     };
+
+    function onLinkedInLoad() {
+        IN.Event.on(IN, 'auth', function() {});
+    }
 
     jQuery(document).ready(function($) {
         
