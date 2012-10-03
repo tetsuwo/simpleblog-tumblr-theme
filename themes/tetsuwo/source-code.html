@@ -17,6 +17,7 @@
     <meta name="text:Google Site Verification" content="tPbl9pGBdKvXdHt600HYHjuqcwMYO4-Gl6Utj3YANgA">
     <meta name="text:Google Analytics" content="UA-17392775-1">
     <meta name="text:Disqus Short Name" content="techlogtetsuwooishi">
+    <meta name="text:Facebook Profile Id" content="1624927191">
     <meta name="text:Facebook App Id" content="48119224995">
     <meta name="text:Facebook Page Url" content="http://www.facebook.com/Tetsuwo.OISHI">
     <meta name="text:Addthis Pub Id" content="tetsuwo">
@@ -37,20 +38,32 @@
         <meta name="google-site-verification" content="{text:Google Site Verification}">
     {/block:IfGoogleSiteVerification}
 
+    <!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS -->
+    <!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. -->
+    <!-- Read more: http://ogp.me/ -->
+
     {block:IfFacebookAppId}
-        <!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS -->
-        <!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. -->
-        <!-- Read more: http://ogp.me/ -->
         <meta property="fb:app_id" content="{text:Facebook App Id}">
-        <meta property="og:title" content="{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}">
-        <meta property="og:url" content="{Permalink}">
-        {block:Description}
-            <meta property="og:description" content="{MetaDescription}">
-        {/block:Description}
-        <meta property="og:type" content="tumblr-feed:tumblelog">
-        <meta property="og:image" content="{Favicon}">
-        <!-- END TUMBLR FACEBOOK OPENGRAPH TAGS -->
     {/block:IfFacebookAppId}
+
+    {block:IfFacebookProfileId}
+        <meta property="fb:admins" content="{text:Facebook Profile Id}">
+    {/block:IfFacebookProfileId}
+
+    <meta property="og:type" content="tumblr-feed:tumblelog">
+    <meta property="og:site_name" content="{Title}">
+    <meta property="og:title" content="{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}">
+    <meta property="og:url" content="{Permalink}">
+    <meta property="og:description" content="{block:Description}{MetaDescription}{/block:Description}">
+
+    {block:PermalinkPagination}
+        {block:Posts}{block:Photo}<meta property="og:image" content="{PhotoURL-500}">{/block:Photo}{/block:Posts}
+    {/block:PermalinkPagination}
+    {block:IndexPage}
+        <meta property="og:image" content="{PortraitURL-128}">
+    {/block:IndexPage}
+
+    <!-- END TUMBLR FACEBOOK OPENGRAPH TAGS -->
 
     <link rel="icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
