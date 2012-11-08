@@ -21,6 +21,7 @@
         <meta name="text:Facebook App Id" content="48119224995">
         <meta name="text:Facebook Page Url" content="http://www.facebook.com/Tetsuwo.OISHI">
         <meta name="text:Addthis Pub Id" content="tetsuwo">
+        <meta name="if:Display Following" content="0">
         <meta name="if:Debug Mode" content="0">
         <!-- /VARIABLES -->
 
@@ -72,6 +73,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+        <script src="//static.tumblr.com/clvypew/a9rmd5ahj/tumblr2.min.js"></script>
         <style>
 
 /*!
@@ -157,7 +159,7 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 #header, #pagebody {
     margin: 0 auto;
     padding: 0 1em;
-    max-width: 740px;
+    max-width: 980px;
 }
 
 /* HEADER */
@@ -188,18 +190,46 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 #pagebody { margin-bottom: 5em; }
 
 /* SIDEBAR */
-#sidebar { }
+#sidebar { 
+    float: right;
+    width: 30%;
+}
+#sidebar a {
+    font-weight: normal;
+}
+.sidebar-title {
+    font-weight: bold;
+    color: #aaa;
+    margin-bottom: .25em;
+}
+.sidebar-group { 
+    margin-bottom: .75em;
+}
+#tags { 
+    font-size: 90%;
+}
 
 /* MENU */
-#menu { background-color: #666; padding: 8px 10px; border-radius: 5px;
-        -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); -moz-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); }
+#menu { 
+    background-color: #666; 
+    padding: 8px 10px; 
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); 
+    -moz-box-shadow: 0 0 2em rgba(0, 0, 0, 0.4); 
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.4);
+}
 #menu, #menu a { color: #fff; line-height: 1.8em; }
 #menu a:hover { color: #8c0; }
 #menu .fixmb { margin-bottom: 1.5em; }
 #menu h1 { margin-bottom: .5em; border-bottom: 1px dotted #bbb; color: #bbb; }
 
 /* MAIN */
-#main { margin-top: .5em; text-shadow: none; }
+#main { 
+    float: left;
+    width: 70%;
+    margin-top: .5em; 
+    text-shadow: none; 
+}
 
 /* FOOTER */
 #footer {
@@ -419,16 +449,25 @@ article.permalink .post-body { margin-bottom: 2em; }
 }
 
 /* iPhone 3G/3GS CSS */
+@media only screen and (max-width: 780px) {
+    html { -webkit-text-size-adjust: none; }
+    #header, #pagebody { width: auto; max-width: auto; }
+    #main, #menu, #sidebar { width: auto; float: none; }
+}
+
+/* iPhone 3G/3GS CSS */
 @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) {
     html { -webkit-text-size-adjust: none; }
     #header, #pagebody { width: auto; max-width: auto; }
+    #main, #menu, #sidebar { width: auto; float: none; }
+}
 
 /* iPhone 4 CSS */
 @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) {
     html { -webkit-text-size-adjust: none; }
     #header, #pagebody { width: auto; max-width: auto; }
+    #main, #menu, #sidebar { width: auto; float: none; }
 }
-
 
 
         </style>
@@ -439,6 +478,12 @@ article.permalink .post-body { margin-bottom: 2em; }
             authorize: true
         </script>
         <script>
+
+            var tumblr = new Tumblr2({
+                debug: false,
+                apiKey: 'fme5U6F8DVblNs7HFYtR0ahOs8o1UjxKjqJUuAlBXJSJUu89oN'
+            });
+            tumblr.setBaseHostname('tetsuwo.tumblr.com');
 
             var addthis_share = {
                 templates: '{Title} {Permalink} from @tetsukamp'
@@ -593,35 +638,37 @@ article.permalink .post-body { margin-bottom: 2em; }
             </section><!-- /main -->
 
             <div id="sidebar" class="clearfix">
-                <hr>
-                <!--<aside id="menu" class="fixmb clearfix">
-                    <h1 class="hide">MENU</h1>
-                    <nav class="clearfix fixmb">
-                        <h1>Menu</h1>
-                        <ul>
-                            <li><a href="/archive">Archive</a></li>
-                            <li><a href="{RSS}">Subscribe</a></li>
-                            <li><a href="#profile">Profile</a></li>
-                        </ul>
-                    </nav>
-                </aside>-->
-                <aside class="fixmb clearfix">
-                    <h1 class="hide">SEARCH</h1>
-                    <form action="/search" method="get">
-                        <input type="text" name="q" value="{SearchQuery}" style="width: 10em;">
-                        <button class="medium blue awesome show">Search &raquo;</button>
-                    </form>
-                </aside>
-                <aside class="fixmb clearfix">
-                    <div style="float:left; margin-right:1.5em;">
-                        <h1>Facebook Page</h1>
+                <div style="padding-left: 30px;">
+                    <section class="sidebar-group clearfix">
+                        <h1 class="sidebar-title">Tags</h1>
+                        <ul id="tags"></ul>
+                    </section>
+                    <aside class="sidebar-group clearfix">
+                        <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+                        <script language="javascript" type="text/javascript">
+                            Hatena.BookmarkWidget.url   = "http://tetsuwo.tumblr.com";
+                            Hatena.BookmarkWidget.title = "Popular Articles";
+                            Hatena.BookmarkWidget.sort  = "count";
+                            Hatena.BookmarkWidget.width = 0;
+                            Hatena.BookmarkWidget.num   = 20;
+                            Hatena.BookmarkWidget.theme = "Hatena.BookmarkWidget";
+                            Hatena.BookmarkWidget.load();
+                        </script>
+                    </aside>
+                    <aside class="sidebar-group clearfix">
                         <div class="facebook-like-box"
                                  data-href="http://www.facebook.com/Tetsuwo.OISHI"
-                                 data-width="740" data-height="260" data-show_faces="true"
-                                 data-border_color="#bbb" data-stream="false" data-header="false"></div>
-                        </div>
-                    </div>
-                </aside>
+                                 data-width="740" data-height="200" data-show_faces="true"
+                                 data-border_color="#eee" data-stream="false" data-header="false"></div>
+                    </aside>
+                    <aside class="sidebar-group clearfix">
+                        <h1 class="sidebar-title">SEARCH</h1>
+                        <form action="/search" method="get">
+                            <input type="text" name="q" value="{SearchQuery}" style="width: 10em;">
+                            <button class="medium blue awesome show">Search &raquo;</button>
+                        </form>
+                    </aside>
+                </div>
             </div>
         </div><!-- /pagebody -->
 
@@ -640,6 +687,8 @@ article.permalink .post-body { margin-bottom: 2em; }
                             <li><a href="#following">Following</a></li>
                             <li><a href="#profile">Profile</a></li>
                         </ul>
+                    </nav>
+                    <nav>
                         <h3 id="link">Link</h3>
                         <div class="fixmb">
                             <a href="http://webya.in/" target="_blank"><img src="http://media.tumblr.com/tumblr_lldotfCuKf1qc24pp.png" alt="HTML5 CSS3 JavaScript &#8211; WEBYA.IN"></a>
@@ -666,18 +715,6 @@ article.permalink .post-body { margin-bottom: 2em; }
                             <li><a href="https://chrome.google.com/webstore/detail/kbaamlaoekkcaebldgfmoogffhjhdpha">Markdownista (Chrome App)</a></li>
                         </ul>
                     </nav>
-                    <nav>
-                        <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
-                        <script language="javascript" type="text/javascript">
-                        Hatena.BookmarkWidget.url   = "http://tetsuwo.tumblr.com";
-                        Hatena.BookmarkWidget.title = "Popular Articles";
-                        Hatena.BookmarkWidget.sort  = "count";
-                        Hatena.BookmarkWidget.width = 0;
-                        Hatena.BookmarkWidget.num   = 10;
-                        Hatena.BookmarkWidget.theme = "notheme";
-                        Hatena.BookmarkWidget.load();
-                        </script>
-                    </nav>
                     <nav id="profile" class="profile">
                         <h3>Profile</h3>
                         <p class="fixmb">Tetsuwo OISHI - 1984/09/14<br>{Description}</p>
@@ -695,10 +732,10 @@ article.permalink .post-body { margin-bottom: 2em; }
                 </div>
 
                 {block:Following}
-                    <section id="following" class="foot clearfix">
+                    <!--<section id="following" class="foot clearfix">
                         <h3>Following</h3>
                         {block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-24}" alt="{FollowedName}"></a> {/block:Followed}
-                    </section>
+                        </section>-->
                 {/block:Following}
 
                 <div class="copyright">
@@ -723,7 +760,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                     $('.facebook-like-box').each(function() {
                         $(this).empty().append($('<fb:like-box />').attr({
                             href: $(this).attr('data-href'),
-                            width: $('#pagebody').width(),
+                            width: $('#sidebar div:eq(0)').width(),
                             height: $(this).attr('data-height'),
                             show_faces: $(this).attr('data-show_faces'),
                             border_color: $(this).attr('data-border_color'),
@@ -735,7 +772,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                     $('.facebook-comments').each(function() {
                         $(this).empty().append($('<fb:comments />').attr({
                             href: $(this).attr('data-href'),
-                            width: $('#pagebody').width(),
+                            width: $('#main').width(),
                             num_posts: $(this).attr('data-num_posts')
                         }));
                     });
@@ -778,15 +815,78 @@ article.permalink .post-body { margin-bottom: 2em; }
             function onLinkedInLoad() {
                 IN.Event.on(IN, 'auth', function() {});
             }
+            
+            window.TumblrTags = { 
+                tagsCount: 3,
+                next: true, 
+                limit: 20, 
+                offset: 0, 
+                tempTags: [] 
+            };
+            window.TumblrTags.collector = function() {
+                var self = this;
+                
+                tumblr.api('/blog/posts', { limit: self.limit, offset: self.offset * self.limit }, function(data) {
+                    if (!data || !data.response || !data.response.posts || !data.response.posts.length) {
+                        self.next = false;
+                        self.aggregator();
+                        return;
+                    }
+
+                    var row, tagname, tag;
+                    for(var i in data.response.posts) {
+                        row = data.response.posts[i];
+                        for(var j in row.tags) {
+                            tag = row.tags[j];
+                            if (!self.tempTags[tag]) {
+                                self.tempTags[tag] = 0;
+                            }
+                            self.tempTags[tag]++;
+                        }
+                    }
+
+                    self.offset++;
+                    if (self.next) {
+                        self.collector();
+                    }
+                });
+            }; 
+
+            window.TumblrTags.aggregator = function() {
+                var self = this, aggregatedTags = [];
+                for(tagname in self.tempTags) {
+                    aggregatedTags.push({
+                        name  : tagname,
+                        value : self.tempTags[tagname]
+                    });
+                }
+   
+                var tags = [];
+                aggregatedTags.sort(function(x, y) {
+                    return y.value - x.value;
+                });
+   
+                for(var key in aggregatedTags) {
+                    tag = aggregatedTags[key];
+                    if (tag.value < self.tagsCount) {
+                        continue;
+                    }
+                    tags.push('<li><a href="http://'
+                              + tumblr.config.baseHostname
+                              + '/tagged/' + encodeURIComponent(tag.name)
+                              + '" target="_blank">' + tag.name
+                              + ' (' + tag.value + ')</a></li>');
+                }
+
+                document.getElementById('tags').innerHTML = tags.join('');
+            };
 
             jQuery(document).ready(function($) {
-
                 localStorage._width = $('body').width();
 
-                $('a[href^="http"]').not('[href*="' + location.hostname + '"]').attr('target', '_blank');
-
-        //        $(document).on('click', 'a', function() {
-        //        });
+                $('a[href^="http"]')
+                    .not('[href*="' + location.hostname + '"]')
+                    .attr('target', '_blank');
 
                 /* TWITTER */
                 try {
@@ -795,6 +895,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                     });
                 } catch(e) {;}
 
+                window.TumblrTags.collector();
             });
 
         </script>
