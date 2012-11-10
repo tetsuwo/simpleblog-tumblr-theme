@@ -189,20 +189,20 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 /* PAGEBODY */
 #pagebody { margin-bottom: 5em; }
 
-/* SIDEBAR */
-#sidebar { 
+/* sider */
+#sider { 
     float: right;
-    width: 30%;
+    width: 200px;
 }
-#sidebar a {
+#sider a {
     font-weight: normal;
 }
-.sidebar-title {
+.sider-title {
     font-weight: bold;
     color: #aaa;
     margin-bottom: .25em;
 }
-.sidebar-group { 
+.sider-group { 
     margin-bottom: .75em;
 }
 #tags { 
@@ -226,8 +226,7 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 /* MAIN */
 #main { 
     float: left;
-    width: 70%;
-    margin-top: .5em; 
+    width: 740px;
     text-shadow: none; 
 }
 
@@ -441,32 +440,30 @@ article.permalink .post-body { margin-bottom: 2em; }
 /* -- social plugin -- */
 .post-social-plugin {
     margin: 1em 0;
-    background-color: #f5f5f5;
-    border: 1px solid #eee;
+    border-bottom: 1px dotted #eee;
     padding: .5em;
-    height: 20px;
     vertical-align: middle;
 }
 
 /* iPhone 3G/3GS CSS */
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 940px) {
     html { -webkit-text-size-adjust: none; }
     #header, #pagebody { width: auto; max-width: auto; }
-    #main, #menu, #sidebar { width: auto; float: none; }
+    #main, #menu, #sider { width: auto; float: none; }
 }
 
 /* iPhone 3G/3GS CSS */
 @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 1) {
     html { -webkit-text-size-adjust: none; }
     #header, #pagebody { width: auto; max-width: auto; }
-    #main, #menu, #sidebar { width: auto; float: none; }
+    #main, #menu, #sider { width: auto; float: none; }
 }
 
 /* iPhone 4 CSS */
 @media only screen and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) {
     html { -webkit-text-size-adjust: none; }
     #header, #pagebody { width: auto; max-width: auto; }
-    #main, #menu, #sidebar { width: auto; float: none; }
+    #main, #menu, #sider { width: auto; float: none; }
 }
 
 
@@ -635,15 +632,15 @@ article.permalink .post-body { margin-bottom: 2em; }
                     </footer>
                 {/block:PermalinkPagination}
 
-            </section><!-- /main -->
+            </section><!-- /#main -->
 
-            <div id="sidebar" class="clearfix">
-                <div style="padding-left: 30px;">
-                    <section class="sidebar-group clearfix">
-                        <h1 class="sidebar-title">Tags</h1>
+            <div id="sider" class="clearfix">
+                <div class="sider-inner">
+                    <section class="sider-group clearfix">
+                        <h1 class="sider-title">Tags</h1>
                         <ul id="tags"></ul>
                     </section>
-                    <aside class="sidebar-group clearfix">
+                    <aside class="sider-group clearfix">
                         <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
                         <script language="javascript" type="text/javascript">
                             Hatena.BookmarkWidget.url   = "http://tetsuwo.tumblr.com";
@@ -655,22 +652,22 @@ article.permalink .post-body { margin-bottom: 2em; }
                             Hatena.BookmarkWidget.load();
                         </script>
                     </aside>
-                    <aside class="sidebar-group clearfix">
+                    <aside class="sider-group clearfix">
                         <div class="facebook-like-box"
-                                 data-href="http://www.facebook.com/Tetsuwo.OISHI"
-                                 data-width="740" data-height="200" data-show_faces="true"
-                                 data-border_color="#eee" data-stream="false" data-header="false"></div>
+                             data-href="http://www.facebook.com/Tetsuwo.OISHI"
+                             data-width="740" data-height="200" data-show_faces="true"
+                             data-border_color="#eee" data-stream="false" data-header="false"></div>
                     </aside>
-                    <aside class="sidebar-group clearfix">
-                        <h1 class="sidebar-title">SEARCH</h1>
+                    <aside class="sider-group clearfix">
+                        <h1 class="sider-title">SEARCH</h1>
                         <form action="/search" method="get">
                             <input type="text" name="q" value="{SearchQuery}" style="width: 10em;">
                             <button class="medium blue awesome show">Search &raquo;</button>
                         </form>
                     </aside>
                 </div>
-            </div>
-        </div><!-- /pagebody -->
+            </div><!-- /#sider -->
+        </div><!-- /#pagebody -->
 
         <footer id="footer" class="clearfix">
             <div class="footer-menu fixed-width clearfix">
@@ -760,7 +757,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                     $('.facebook-like-box').each(function() {
                         $(this).empty().append($('<fb:like-box />').attr({
                             href: $(this).attr('data-href'),
-                            width: $('#sidebar div:eq(0)').width(),
+                            width: $('#sider .sider-inner').width(),
                             height: $(this).attr('data-height'),
                             show_faces: $(this).attr('data-show_faces'),
                             border_color: $(this).attr('data-border_color'),
@@ -910,6 +907,6 @@ article.permalink .post-body { margin-bottom: 2em; }
         <script src="//static.ak.fbcdn.net/connect.php/js/FB.Share" async></script>
         <script src="//apis.google.com/js/plusone.js" async></script>
         <script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
-
     </body>
 </html>
+/html>
