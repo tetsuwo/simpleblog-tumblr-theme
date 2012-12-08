@@ -721,15 +721,14 @@ div.inner { padding: 0 10px; }
     var TWITTER_WIDGET_TIMER = setInterval(
         function() {
             try {
-//                console.log('twitter widget timer!');
                 TWITTER_WIDGET = new TWTR.Widget({
                     id: 'twitter-timeline',
                     version: 2,
                     type: 'search',
-                    search: 'from:netsket_inc OR from:_tetsuwo OR from:nsacty OR from:netsket_ogura OR from:netsket_koshiba OR from:miyuki8 OR from:issei_m',
+                    search: 'from:netsket_inc OR from:nsacty OR from:netsket_ogura OR from:netsket_koshiba OR from:miyuki8 OR from:issei_m',
                     interval: 6000,
                     title: '',
-                    subject: 'Netsket Crew\'s Twitter Timeline',
+                    subject: 'Netsket Crew\'s Tweet',
                     width: 'auto',
                     height: 300,
                     theme: {shell: {background: '#ffffff', color: '#ffffff'}, tweets: {background: '#ffffff', color: '#444444', links: '#1985b5'}},
@@ -755,7 +754,6 @@ div.inner { padding: 0 10px; }
     var TWITTER_ANYWHERE_TIMER = setInterval(
         function() {
             try {
-//                console.log('twitter anywhere timer!');
                 twttr.anywhere(function(T) {
                     T.hovercards();
                     T('a.user').hovercards({username: function(node) {return node.title;}});
