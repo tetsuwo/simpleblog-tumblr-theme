@@ -12,17 +12,20 @@
         <meta charset="utf-8">
         <meta name="author" content="Tetsuwo OISHI">
         <meta name="copyright" content="(c) Tetsuwo OISHI">
-        <meta name="theme" content="Tumple">
+        <meta name="theme:name" content="Tumple">
+        <meta name="theme:author" content="Tetsuwo OISHI <tetsuwo.oishi@gmail.com>">
         <title>{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
 
         <!-- VARIABLES/ -->
-        <meta name="text:Google Site Verification" content="tPbl9pGBdKvXdHt600HYHjuqcwMYO4-Gl6Utj3YANgA">
-        <meta name="text:Google Analytics" content="UA-17392775-1">
-        <meta name="text:Disqus Short Name" content="techlogtetsuwooishi">
-        <meta name="text:Facebook Profile Id" content="1624927191">
+        <meta name="color:Emphasis Color" content="#11313D" />
+        <meta name="text:Addthis Pub Id" content="">
+        <meta name="text:Disqus Short Name" content="">
+        <meta name="text:Google Site Verification" content="">
+        <meta name="text:Google Analytics" content="">
+        <meta name="text:Facebook Profile Id" content="">
         <meta name="text:Facebook App Id" content="48119224995">
-        <meta name="text:Facebook Page Url" content="http://www.facebook.com/Tetsuwo.OISHI">
-        <meta name="text:Addthis Pub Id" content="tetsuwo">
+        <meta name="text:Facebook Page Url" content="">
+        <meta name="text:Twitter Screen Name" content="">
         <meta name="if:Display Following" content="0">
         <meta name="if:Debug Mode" content="0">
         <!-- /VARIABLES -->
@@ -190,7 +193,7 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
     color: #fff;
     padding: 10px 15px;
     border-radius: 0 0 5px 5px;
-    background-color: #11313D;
+    background-color: {color:Emphasis Color};
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
@@ -255,15 +258,25 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
     text-align: left;
     padding: 30px 0;
     position: relative;
-    background-color: #11313D;
+    background-color: {color:Emphasis Color};
 }
 #footer, #footer a { font-size: 11px; font-weight: bold; line-height: 1.5; color: #fff; text-decoration: none; }
 #footer a:hover { color: #8c0; }
 #footer h3 { margin: .5em 0 .3em; font-size: 130%; }
 /* -- footer pagetop -- */
 #footer .pagetop { position: absolute; top: -50px; right: 3em; }
-#footer .pagetop a { border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; display: block; width: 80px; height: 20px;
-    line-height: 20px; background-color: #11313D; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold; text-decoration: none; }
+#footer .pagetop a {
+    border-radius: 4px 4px 0 0; 
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0; 
+    display: block; 
+    width: 80px; 
+    height: 20px;
+    line-height: 20px; 
+    background-color: {color:Emphasis Color}; 
+    text-align: center;
+    font-family: 'Arial', sans-serif; font-weight: bold; text-decoration: none; 
+}
 /* -- footer head/foot -- */
 #footer .head { margin-bottom: 3em; }
 #footer .foot { margin-bottom: 3em; }
@@ -311,7 +324,7 @@ pre {
     line-height: 1.4;
     padding: 1em;
     margin: 1em 0 1.5em;
-    background-color: #11313D;
+    background-color: {color:Emphasis Color};
     color: #d1d1d1;
     font-family: 'M+2VM+IPAG circle', 'Osaka-Mono', 'ＭＳ ゴシック', 'MS Gothic', 'VL Gothic', monospace;
     border-radius: .5em;
@@ -543,7 +556,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                             {block:PermalinkPage}
                                 <div class="post-social-plugin clearfix">
                                     <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
-                                        <a class="addthis_button_tweet"></a>
+                                        <a class="addthis_button_tweet"{block:IfTwitterScreenName} tw:via="{text:Twitter Screen Name}"{/block:IfTwitterScreenName}></a>
                                         <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"></a>
                                         <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
                                         <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
@@ -579,7 +592,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                             </div>
                             <div class="post-social-plugin clearfix">
                                 <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
-                                    <a class="addthis_button_tweet"></a>
+                                    <a class="addthis_button_tweet"{block:IfTwitterScreenName} tw:via="{text:Twitter Screen Name}"{/block:IfTwitterScreenName}></a>
                                     <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"></a>
                                     <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
                                     <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
@@ -640,10 +653,6 @@ article.permalink .post-body { margin-bottom: 2em; }
 
             <div id="sider" class="clearfix">
                 <div class="sider-inner">
-                    <section class="sider-group clearfix">
-                        <h1 class="sider-title">Tags</h1>
-                        <ul id="tags"></ul>
-                    </section>
                     <aside class="sider-group clearfix">
                         <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
                         <script language="javascript" type="text/javascript">
@@ -651,11 +660,15 @@ article.permalink .post-body { margin-bottom: 2em; }
                             Hatena.BookmarkWidget.title = "Popular Articles";
                             Hatena.BookmarkWidget.sort  = "count";
                             Hatena.BookmarkWidget.width = 0;
-                            Hatena.BookmarkWidget.num   = 20;
+                            Hatena.BookmarkWidget.num   = 5;
                             Hatena.BookmarkWidget.theme = "Hatena.BookmarkWidget";
                             Hatena.BookmarkWidget.load();
                         </script>
                     </aside>
+                    <section class="sider-group clearfix">
+                        <h1 class="sider-title">Categories</h1>
+                        <ul id="tags"></ul>
+                    </section>
                     <aside class="sider-group clearfix">
                         <a class="twitter-timeline" href="https://twitter.com/tetsukamp" data-widget-id="269463633367547904" data-width="200" width="200">@tetsukamp からのツイート</a>
                     </aside>
@@ -815,7 +828,7 @@ article.permalink .post-body { margin-bottom: 2em; }
             }
             
             window.TumblrTags = { 
-                tagsCount: 3,
+                tagsCount: 5,
                 next: true, 
                 limit: 20, 
                 offset: 0, 
