@@ -622,13 +622,13 @@ article.permalink .post-body { margin-bottom: 2em; }
                             <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
                         {/block:IfDisqusShortName}
 
-                        <!-- X:S ZenBackWidget/
+                        {Block:PostNotes}{PostNotes}{/Block:PostNotes}
+
+                        <!-- X:S ZenBackWidget/ -->
                         <script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//tetsuwo.tumblr.com/&nsid=93075785836964646%3A%3A93075793889991907&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script>
-                        /X:E ZenBackWidget -->
+                        <!-- /X:E ZenBackWidget -->
 
                     {/block:PermalinkPage}
-
-                    {Block:PostNotes}{PostNotes}{/Block:PostNotes}
 
                 {/block:Posts}
 
