@@ -288,24 +288,6 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 /* -- footer bottom -- */
 #footer .copyright { text-align: right; }
 
-/* -- blockquote -- */
-blockquote {
-    border-left: 5px solid #dfdfdf;
-    padding-left: .5em;
-    margin: 1em 1em 1.5em;
-    font-size: 90%;
-}
-blockquote:before, blockquote:after {
-    /*content: '';*/
-    content: none !important;
-}
-    blockquote p {
-        padding: 0 !important;
-    }
-    blockquote pre {
-        margin-bottom: 0 !important;
-    }
-
 /* -- code -- */
 code {
     background: #f0f6fc;
@@ -327,9 +309,9 @@ pre {
     margin: 1em 0 1.5em;
     background-color: {color:Emphasis Color};
     color: #d1d1d1;
-    font-family: 'M+2VM+IPAG circle', 'Osaka-Mono', 'ＭＳ ゴシック', 'MS Gothic', 'VL Gothic', monospace;
+    font-family: 'Menlo', 'M+2VM+IPAG circle', 'Osaka-Mono', 'ＭＳ ゴシック', 'MS Gothic', 'VL Gothic', monospace;
     border-radius: .5em;
-    box-shadow: inset 1px 1px 1em rgba(0, 0, 0, .4);
+    box-shadow: inset 1px 1px .5em rgba(0, 0, 0, .3);
     overflow: auto;
 }
 pre a, pre a:visited, pre a:hover {
@@ -344,6 +326,27 @@ pre a, pre a:visited, pre a:hover {
         white-space: inherit;
         font-size: inherit;
         border-radius: none;
+    }
+
+/* -- blockquote -- */
+blockquote {
+    border-left: 5px solid #dfdfdf;
+    padding-left: .5em;
+    margin: 1em 1em 1.5em;
+    font-size: 90%;
+}
+blockquote:before, blockquote:after {
+    /*content: '';*/
+    content: none !important;
+}
+    blockquote p {
+        padding: 0 !important;
+    }
+    blockquote pre {
+        text-shadow: none;
+        background-color: #eee;
+        color: #333;
+        margin-bottom: 0;
     }
 
 /* -- note -- */
