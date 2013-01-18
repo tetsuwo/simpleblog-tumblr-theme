@@ -291,9 +291,8 @@ input:hover, textarea:hover { background-color: #eee; outline: none; }
 /* -- blockquote -- */
 blockquote {
     border-left: 5px solid #dfdfdf;
-    background-color: #efefef;
-    padding: 1em;
-    margin: 1em 0 1.5em;
+    padding-left: .5em;
+    margin: 1em 1em 1.5em;
     font-size: 90%;
 }
 blockquote:before, blockquote:after {
@@ -302,7 +301,9 @@ blockquote:before, blockquote:after {
 }
     blockquote p {
         padding: 0 !important;
-        margin: 0 !important;
+    }
+    blockquote pre {
+        margin-bottom: 0 !important;
     }
 
 /* -- code -- */
