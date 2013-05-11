@@ -456,9 +456,10 @@ article.permalink .post-body { margin-bottom: 2em; }
 
 /* -- addthis -- */
 .addthis_toolbox .hatena-bookmark-button-frame,
+.addthis_toolbox .pocket-btn,
 .addthis_toolbox .IN-widget {
     float: left;
-    margin-right: 1em;
+    margin-right: .25em;
 }
 
 /* -- social plugin -- */
@@ -565,7 +566,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                                     <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
                                         <a class="addthis_button_tweet"{block:IfTwitterScreenName} tw:via="{text:Twitter Screen Name}"{/block:IfTwitterScreenName}></a>
                                         <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"></a>
-                                        <a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+                                        <a data-save-url="{Permalink}" data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
                                         <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
                                         <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
                                         <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="105" fb:like:ref=""></a>
@@ -602,7 +603,7 @@ article.permalink .post-body { margin-bottom: 2em; }
                                 <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
                                     <a class="addthis_button_tweet"{block:IfTwitterScreenName} tw:via="{text:Twitter Screen Name}"{/block:IfTwitterScreenName}></a>
                                     <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"></a>
-                                    <a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a>
+                                    <a data-save-url="{Permalink}" data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
                                     <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
                                     <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
                                     <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="105" fb:like:ref=""></a>
