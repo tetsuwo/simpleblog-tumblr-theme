@@ -638,6 +638,29 @@ article.permalink .post-body { margin-bottom: 2em; }
                         <script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//tetsuwo.tumblr.com/&nsid=93075785836964646%3A%3A93075793889991907&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script>
                         <!-- /X:E ZenBackWidget -->
 
+<script>
+    _gaq.push(['_addTrans',
+        'Order ID', // order ID - required
+        'Store name', // affiliation or store name
+        '100', // total - required
+        '5', // tax
+        '50', // shipping
+        'Shinjuku', // city
+        'Tokyo', // state or province
+        'Japan' // country
+    ]);
+    _gaq.push(['_addItem',
+        'Order ID', // order ID - required
+        'SKU', // SKU/code - required
+        '3rd',
+        'Category', // category or variation
+        '100', // unit price - required
+        '1' // quantity - required
+    ]);
+    _gaq.push(['_trackTrans']);
+</script>
+
+
                     {/block:PermalinkPage}
 
                 {/block:Posts}
