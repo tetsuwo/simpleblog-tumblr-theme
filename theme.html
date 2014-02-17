@@ -14,7 +14,7 @@
         <meta name="theme:name" content="Tumple">
         <meta name="theme:author" content="Tetsuwo OISHI <tetsuwo.oishi@gmail.com>">
         <meta name="theme:version" content="0.4.18">
-        <title>{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
+        <title>{SearchQuery}{block:TagPage}{Tag}{block:Pagination} (Page {CurrentPage}){/block:Pagination} &laquo; {/block:TagPage}{block:PostSummary}{PostSummary} &laquo; {/block:PostSummary}{Title}</title>
         <!-- VARIABLES {{{ -->
         <meta name="color:Emphasis Color" content="#11313D">
         <meta name="text:Addthis Pub Id" content="">
@@ -163,7 +163,7 @@
             #header, #pagebody, .footer-menu {
                 margin: 0 auto;
                 padding: 0 1em;
-                max-width: 780px;
+                max-width: 840px;
             }
             
             /* HEADER */
@@ -230,7 +230,7 @@
             /* MAIN */
             #main { 
                 float: left;
-                width: 540px;
+                width: 600px;
                 text-shadow: none; 
             }
 
@@ -477,6 +477,10 @@
                 #header, #pagebody { width: auto; max-width: auto; }
                 #main, #menu, #sider { width: auto; float: none; }
             }
+            
+            .my_adslot { width: 320px; height: 50px; }
+            @media(min-width: 500px) { .my_adslot { width: 468px; height: 60px; } }
+            @media(min-width: 800px) { .my_adslot { width: 728px; height: 90px; } }
         </style>
         <!--  }}} -->
         <style>{CustomCSS}</style>
@@ -569,6 +573,20 @@
                         {block:Video}{Video-500}{block:Caption}{Caption}{/block:Caption}{/block:Video}
 
                         <footer class="post-foot clearfix">
+                            {block:PermalinkPage}
+                                <aside style="margin-bottom:1em;">
+                                    <!-- をぶろぐ_本文フッター -->
+                                    <ins class="adsbygoogle"
+                                         style="display:inline-block;width:320px;height:50px"
+                                         data-ad-client="ca-pub-1182643073398882"
+                                         data-ad-slot="5627923844"></ins>
+                                    <!-- をぶろぐ_本文フッター（レスポンシブ）
+                                    <ins class="adsbygoogle my_adslot"
+                                         style="display:inline-block"
+                                         data-ad-client="ca-pub-1182643073398882"
+                                         data-ad-slot="6399979843"></ins> -->
+                                </aside>
+                            {/block:PermalinkPage}
                             <div class="clearfix">
                                 {block:HasTags}
                                     <p class="tags">
@@ -621,7 +639,7 @@
                         <!-- X:S ZenBackWidget/ -->
                         <script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//tetsuwo.tumblr.com/&nsid=93075785836964646%3A%3A93075793889991907&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script>
                         <!-- /X:E ZenBackWidget -->
-
+<!--
 <script>
     _gaq.push(['_addTrans',
         'Order ID', // order ID - required
@@ -643,7 +661,7 @@
     ]);
     _gaq.push(['_trackTrans']);
 </script>
-
+-->
 
                     {/block:PermalinkPage}
 
@@ -677,7 +695,7 @@
                             Hatena.BookmarkWidget.title = "Popular Articles";
                             Hatena.BookmarkWidget.sort  = "count";
                             Hatena.BookmarkWidget.width = 0;
-                            Hatena.BookmarkWidget.num   = 5;
+                            Hatena.BookmarkWidget.num   = 10;
                             Hatena.BookmarkWidget.theme = "Hatena.BookmarkWidget";
                             Hatena.BookmarkWidget.load();
                         </script>
@@ -771,6 +789,7 @@
                 </div>
             </div>
         </footer>
+
         <!-- FACEBOOK JAVASCRIPT {{{ -->
         {block:IfFacebookAppId}
             <div id="fb-root"></div>
@@ -829,6 +848,7 @@
             </script>
         {/block:IfFacebookAppId}
         <!-- }}} -->
+
         <!-- FOOTER JAVASCRIPT {{{ -->
         <script>
 
@@ -944,28 +964,22 @@
                     .not('[href*="' + location.hostname + '"]')
                     .attr('target', '_blank');
 
-                /* TWITTER */
-                try {
-                    twttr.anywhere(function(T) {
-                        T.hovercards();
-                    });
-                } catch(e) {;}
-
                 window.TumblrTags.run();
             });
 
         </script>
         <!--  }}} -->
+
         {block:IfAddthisPubId}
             <script src="//s7.addthis.com/js/250/addthis_widget.js#username={text:Addthis Pub Id}" async></script>
         {/block:IfAddthisPubId}
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         <script src="//platform.twitter.com/widgets.js" async></script>
         <script src="//widgets.twimg.com/j/2/widget.js" async></script>
-        <script src="//platform.twitter.com/anywhere.js?id=zYXPdUUZrelo5ZoF072dGQ&v=1" async></script>
-        <script src="//static.ak.fbcdn.net/connect.php/js/FB.Share" async></script>
         <script src="//apis.google.com/js/plusone.js" async></script>
         <script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
-        <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        <script>!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
     </body>
 </html>
 <!-- vim:foldmethod=marker:foldlevel=0 -->
