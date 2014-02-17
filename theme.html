@@ -480,7 +480,7 @@
             
             .my_adslot { width: 320px; height: 50px; }
             @media(min-width: 500px) { .my_adslot { width: 468px; height: 60px; } }
-            @media(min-width: 800px) { .my_adslot { width: 728px; height: 90px; } }
+            /*@media(min-width: 800px) { .my_adslot { width: 728px; height: 90px; } }*/
         </style>
         <!--  }}} -->
         <style>{CustomCSS}</style>
@@ -506,18 +506,6 @@
                     console.log(val);
                 }
             };
-
-            {block:IfGoogleAnalytics}
-                // google analytics
-                var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', '{text:Google Analytics}']);
-                _gaq.push(['_trackPageview']);
-                (function(d) {
-                    var ga = d.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                    ga.src = ('https:' == d.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                })(document);
-            {/block:IfGoogleAnalytics}
 
             {block:IfDisqusShortName}
                 // disqus
@@ -575,16 +563,16 @@
                         <footer class="post-foot clearfix">
                             {block:PermalinkPage}
                                 <aside style="margin-bottom:1em;">
-                                    <!-- をぶろぐ_本文フッター -->
+                                    <!-- をぶろぐ_本文フッター 
                                     <ins class="adsbygoogle"
                                          style="display:inline-block;width:320px;height:50px"
                                          data-ad-client="ca-pub-1182643073398882"
-                                         data-ad-slot="5627923844"></ins>
-                                    <!-- をぶろぐ_本文フッター（レスポンシブ）
+                                         data-ad-slot="5627923844"></ins>-->
+                                    <!-- をぶろぐ_本文フッター（レスポンシブ）-->
                                     <ins class="adsbygoogle my_adslot"
-                                         style="display:inline-block"
+                                         style="display:inline-block;"
                                          data-ad-client="ca-pub-1182643073398882"
-                                         data-ad-slot="6399979843"></ins> -->
+                                         data-ad-slot="6399979843"></ins>
                                 </aside>
                             {/block:PermalinkPage}
                             <div class="clearfix">
@@ -604,11 +592,23 @@
                             <div class="post-social-plugin clearfix">
                                 <div class="addthis_toolbox addthis_default_style" addthis:url="{Permalink}" addthis:title="{Title}">
                                     <a class="addthis_button_tweet"{block:IfTwitterScreenName} tw:via="{text:Twitter Screen Name}"{/block:IfTwitterScreenName}></a>
-                                    <a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard"></a>
-                                    <a data-save-url="{Permalink}" data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
-                                    <script type="IN/Share" data-counter="right" data-url="{Permalink}"></script>
-                                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                                    <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="105" fb:like:ref=""></a>
+                                    <a href="http://b.hatena.ne.jp/entry/{Permalink}" 
+                                       class="hatena-bookmark-button" 
+                                       data-hatena-bookmark-layout="standard"></a>
+                                    <a class="pocket-btn" 
+                                       data-save-url="{Permalink}" 
+                                       data-pocket-label="pocket" 
+                                       data-pocket-count="horizontal" 
+                                       data-lang="en"></a>
+                                    <script type="IN/Share" 
+                                            data-counter="right" 
+                                            data-url="{Permalink}"></script>
+                                    <a class="addthis_button_google_plusone" 
+                                       g:plusone:size="medium"></a>
+                                    <a class="addthis_button_facebook_like" 
+                                       fb:like:layout="button_count" 
+                                       fb:like:width="105" 
+                                       fb:like:ref=""></a>
                                     <a class="addthis_counter addthis_pill_style"></a>
                                 </div>
                             </div>
@@ -618,7 +618,10 @@
                     {block:PermalinkPage}
 
                         {block:IfFacebookAppId}
-                            <div class="facebook-comments" data-href="{Permalink}" data-num_posts="10" data-width="740"></div>
+                            <div class="facebook-comments" 
+                                 data-href="{Permalink}" 
+                                 data-num_posts="10" 
+                                 data-width="740"></div>
                         {/block:IfFacebookAppId}
 
                         {block:IfDisqusShortName}
@@ -639,30 +642,6 @@
                         <!-- X:S ZenBackWidget/ -->
                         <script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//tetsuwo.tumblr.com/&nsid=93075785836964646%3A%3A93075793889991907&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script>
                         <!-- /X:E ZenBackWidget -->
-<!--
-<script>
-    _gaq.push(['_addTrans',
-        'Order ID', // order ID - required
-        'Store name', // affiliation or store name
-        '100', // total - required
-        '5', // tax
-        '50', // shipping
-        'Shinjuku', // city
-        'Tokyo', // state or province
-        'Japan' // country
-    ]);
-    _gaq.push(['_addItem',
-        'Order ID', // order ID - required
-        'SKU', // SKU/code - required
-        '3rd',
-        'Category', // category or variation
-        '100', // unit price - required
-        '1' // quantity - required
-    ]);
-    _gaq.push(['_trackTrans']);
-</script>
--->
-
                     {/block:PermalinkPage}
 
                 {/block:Posts}
@@ -851,7 +830,6 @@
 
         <!-- FOOTER JAVASCRIPT {{{ -->
         <script>
-
             var addthis_config = {
                 data_track_clickback: false
             };
@@ -869,7 +847,6 @@
             };
             window.TumblrTags.collector = function() {
                 var self = this;
-                
                 tumblr.api('/blog/posts', { limit: self.limit, offset: self.offset * self.limit }, function(data) {
                     if (!data || !data.response || !data.response.posts || !data.response.posts.length) {
                         self.next = false;
@@ -877,7 +854,6 @@
                         self.aggregator();
                         return;
                     }
-
                     var row, tagname, tag;
                     for(var i in data.response.posts) {
                         row = data.response.posts[i];
@@ -891,7 +867,6 @@
                             self.tempTags[tag]++;
                         }
                     }
-
                     self.offset++;
                     if (self.next) {
                         self.collector();
@@ -907,16 +882,13 @@
                         value : self.tempTags[tagname]
                     });
                 }
-   
                 var tags = [];
                 aggregatedTags.sort(function(x, y) {
                     return y.value - x.value;
                 });
-
                 if (aggregatedTags.length < 1) {
                     return;
                 }
-   
                 for(var key in aggregatedTags) {
                     tag = aggregatedTags[key];
                     if (!tag || !tag.value) {
@@ -931,7 +903,6 @@
                               + '" target="_blank">' + tag.name
                               + ' (' + tag.value + ')</a></li>');
                 }
-
                 document.getElementById('tags').innerHTML = tags.join('');
             };
 
@@ -944,7 +915,6 @@
 
             window.TumblrTags.run = function() {
                 var cachedTags = window.localStorage.getItem('cachedTags');
-
                 if (cachedTags) {
                     cachedTags = JSON.parse(cachedTags);
                     if (cachedTags._cachedTime < (new Date().getTime()) * 1000) {
@@ -953,7 +923,6 @@
                         return;
                     }
                 }
-
                 this.collector();
             };
 
@@ -966,7 +935,6 @@
 
                 window.TumblrTags.run();
             });
-
         </script>
         <!--  }}} -->
 
@@ -980,6 +948,17 @@
         <script src="//apis.google.com/js/plusone.js" async></script>
         <script src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
         <script>!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        {block:IfGoogleAnalytics}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+                ga('create', '{text:Google Analytics}', 'tumblr.com');
+                ga('send', 'pageview');
+            </script>
+        {/block:IfGoogleAnalytics}
     </body>
 </html>
 <!-- vim:foldmethod=marker:foldlevel=0 -->
